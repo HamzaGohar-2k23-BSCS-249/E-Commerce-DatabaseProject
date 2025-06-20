@@ -1,0 +1,142 @@
+
+.variant-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.variant-row select,
+.variant-row input {
+  width: auto;
+  flex: 1;
+}
+.removeVariantBtn {
+  background: #e74c3c;
+  color: white;][
+  border: none;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+}
+/* AddProducts.css */
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Page background and centering */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 2rem;
+}
+
+/* Form card container */
+#productForm {
+  background: #fff;
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Section headings and labels */
+#productForm label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Text inputs, file inputs, selects, textarea */
+#productForm input[type="text"],
+#productForm input[type="password"],
+#productForm input[type="email"],
+#productForm input[type="date"],
+#productForm input[type="number"],
+#productForm input[type="file"],
+#productForm select,
+#productForm textarea {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+#productForm input:focus,
+#productForm select:focus,
+#productForm textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.2);
+}
+
+/* Textarea special */
+#productForm textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Variant section */
+#variantsContainer {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px dashed #bbb;
+  border-radius: 4px;
+  background: #fafafa;
+}
+#addVariantBtn {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#addVariantBtn:hover {
+  background: #218838;
+}
+
+/* Default fields grouping */
+#defaultFields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Submit button */
+#productForm button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 2rem;
+  background: #007bff;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#productForm button[type="submit"]:hover {
+  background: #0056b3;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  #defaultFields {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="home.css" />
+    <style>
+        .product-detail {
+          max-width: 800px;
+          margin: 2rem auto;
+          padding: 1rem;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .detail-image {
+          width: 100%;
+          max-height: 400px;
+          object-fit: contain;
+          margin-bottom: 1rem;
+        }
+        .extra-images img {
+          width: 100px;
+          height: 100px;
+          object-fit: cover;
+          margin-right: 0.5rem;
+          cursor: pointer;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        select, button {
+          margin-top: 0.5rem;
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+          margin-right: 1rem;
+        }
+        button {
+          cursor: pointer;
+          border: none;
+          border-radius: 4px;
+          box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+        #add-to-cart { background-color: #007bff; color: #fff; }
+        #buy-now     { background-color: #28a745; color: #fff; }
+        p { font-size: 1.1rem; }
+        label { font-weight: bold; }
+    </style>
+</head>
+<body>
+<header>
+    <h1 id="prod-name">Loading...</h1>
+    <nav>
+        <a href="/">Home</a>
+        <!-- Cart icon / link -->
+        <a id="view-cart" href="#" style="float:right">
+            🛒 Cart
+        </a>
+    </nav>
+</header>
+
+<main>
+    <div class="product-detail">
+        <img id="main-img" src="" alt="Main product image" class="detail-image" />
+
+        <p id="prod-desc"></p>
+        <p>Category: <span id="prod-cat"></span></p>
+        <p>Price: $<span id="prod-price"></span></p>
+
+        <!-- Variant selectors -->
+        <div>
+            <label for="size-select">Size:</label>
+            <select id="size-select">
+                <option disabled selected>Select size</option>
+            </select>
+
+            <label for="color-select">Color:</label>
+            <select id="color-select" disabled>
+                <option disabled selected>Select color</option>
+            </select>
+        </div>
+        <!-- …inside your .product-detail div, before the buttons… -->
+        <div style="margin-top:1rem;">
+            <label for="qty-input">Quantity:</label>
+            <input
+                    id="qty-input"
+                    type="number"
+                    min="1"
+                    value="1"
+                    style="width:4rem; padding:0.3rem; margin-left:0.5rem;"
+            />
+        </div>
+
+        <!-- Updated: type="button" on both -->
+        <div>
+            <button id="add-to-cart" type="button" disabled>Add to Cart</button>
+            <button id="buy-now"    type="button" disabled>Buy Now</button>
+        </div>
+
+
+        <h3>Extra Images:</h3>
+        <div id="extra-images" class="extra-images"></div>
+    </div>
+</main>
+
+<!-- Your scripts -->
+<script src="product.js?v=20250516"></script>
+</body>
+</html>
