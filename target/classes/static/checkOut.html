@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f7f7f7; }
+        .container { max-width: 800px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h1 { margin-bottom: 1rem; }
+        .flex { display: flex; gap: 2rem; }
+        .flex > div { flex: 1; }
+        label { display: block; margin-top: 1rem; font-weight: bold; }
+        input, select, textarea { width: 100%; padding: 0.5rem; margin-top: 0.5rem; border: 1px solid #ccc; border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #eee; }
+        tfoot td { font-weight: bold; }
+        button { margin-top: 1.5rem; padding: 0.75rem 1.5rem; font-size: 1rem; border: none; border-radius: 4px; cursor: pointer; }
+        .btn-primary { background-color: #007bff; color: #fff; }
+        #card-details { margin-top: 1rem; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Checkout</h1>
+    <div class="flex">
+        <!-- Order Summary -->
+        <div>
+            <h2>Order Summary</h2>
+            <table id="order-summary">
+                <thead>
+                <tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr>
+                </thead>
+                <tbody>
+                <!-- Items will be injected here -->
+                </tbody>
+                <tfoot>
+                <tr><td colspan="3">Grand Total</td><td id="grand-total">$0.00</td></tr>
+                </tfoot>
+            </table>
+        </div>
+        <!-- Shipping & Payment -->
+        <div>
+            <h2>Shipping & Payment</h2>
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="First Name" required />
+
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Last Name" required />
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 555-123-4567" required />
+
+            <label for="address">Address</label>
+            <textarea id="address" name="address" rows="3" placeholder="123 Main St" required></textarea>
+
+            <label for="province">Province</label>
+            <input type="text" id="province" name="province" placeholder="Province/State" required />
+
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" placeholder="City" required />
+
+            <label for="area">Area</label>
+            <input type="text" id="area" name="area" placeholder="Area/Region" required />
+
+            <label for="paymentMethod">Payment Method</label>
+            <select id="paymentMethod" name="paymentMethod">
+                <option value="card">Credit/Debit Card</option>
+                <option value="cod">Cash on Delivery</option>
+            </select>
+
+            <div id="card-details">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="xxxx-xxxx-xxxx-xxxx" />
+            </div>
+
+            <button type="button" class="btn-primary" id="place-order">Place Order</button>
+        </div>
+    </div>
+</div>
+
+<script src="/checkout.js"></script>
+<script>
+    // hide card details for COD
+    document.addEventListener('DOMContentLoaded', () => {
+      const paymentMethod = document.getElementById('paymentMethod');
+      const cardDetails   = document.getElementById('card-details');
+      function toggleCard() {
+        cardDetails.style.display = paymentMethod.value === 'card' ? 'block' : 'none';
+      }
+      paymentMethod.addEventListener('change', toggleCard);
+      toggleCard();
+    });
+</script>
+</body>
+</html>

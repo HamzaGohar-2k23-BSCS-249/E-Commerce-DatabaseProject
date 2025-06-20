@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Add Product</title>
+    <style>
+        /* Reset */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* Body centering */
+        body {
+          font-family: Arial, sans-serif;
+          background: #f4f6f8;
+          display: flex;
+          justify-content: center;
+          align-items: start;
+          padding: 2rem;
+        }
+
+        /* Form card */
+        #productForm {
+          background: #fff;
+          width: 100%;
+          max-width: 600px;
+          padding: 2rem;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Headings */
+        #productForm h1 {
+          margin-bottom: 1.5rem;
+          text-align: center;
+          color: #333;
+        }
+
+        /* Labels */
+        #productForm label {
+          display: block;
+          margin-top: 1rem;
+          font-weight: bold;
+          color: #333;
+        }
+
+        /* Inputs, selects, textareas */
+        #productForm input[type="text"],
+        #productForm input[type="password"],
+        #productForm input[type="email"],
+        #productForm input[type="date"],
+        #productForm input[type="number"],
+        #productForm input[type="file"],
+        #productForm select,
+        #productForm textarea {
+          width: 100%;
+          margin-top: 0.5rem;
+          padding: 0.6rem 0.8rem;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 1rem;
+          transition: border-color 0.2s;
+        }
+        #productForm input:focus,
+        #productForm select:focus,
+        #productForm textarea:focus {
+          border-color: #007bff;
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(0,123,255,0.2);
+        }
+
+        /* Description box */
+        #productForm textarea {
+          min-height: 100px;
+          resize: vertical;
+        }
+
+        /* Default fields grid */
+        #defaultFields {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+          gap: 1rem;
+          margin-top: 1rem;
+        }
+
+        /* Variants section */
+        #variantsContainer {
+          margin-top: 1rem;
+          padding: 1rem;
+          border: 1px dashed #bbb;
+          border-radius: 4px;
+          background: #fafafa;
+        }
+        #addVariantBtn {
+          display: inline-block;
+          margin-bottom: 1rem;
+          padding: 0.5rem 1rem;
+          background: #28a745;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        #addVariantBtn:hover {
+          background: #218838;
+        }
+
+        /* Submit button */
+        #productForm button[type="submit"] {
+          width: 100%;
+          padding: 0.75rem;
+          margin-top: 2rem;
+          background: #007bff;
+          color: #fff;
+          font-size: 1.1rem;
+          font-weight: bold;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        #productForm button[type="submit"]:hover {
+          background: #0056b3;
+        }
+
+        /* Responsive tweak */
+        @media (max-width: 480px) {
+          #defaultFields {
+            grid-template-columns: 1fr;
+          }
+        }
+    </style>
+</head>
+<body>
+<form id="productForm" action="/addProducts" method="post" enctype="multipart/form-data">
+    <h1>Add New Product</h1>
+
+    <label for="name">Product Name</label>
+    <input type="text" id="name" name="name" placeholder="Product Name" required>
+
+    <label for="categoryName">Select Category</label>
+    <select id="categoryName" name="categoryName" required>
+        <option value="">--Choose category--</option>
+        <option>Clothes</option>
+        <option>Accessories</option>
+        <option>Footwear</option>
+    </select>
+
+    <label for="mainImage">Main Image</label>
+    <input type="file" id="mainImage" name="mainImage" accept="image/*" required>
+
+    <label for="imageUrl">Additional Image</label>
+    <input type="file" id="imageUrl" name="imageUrl" accept="image/*">
+
+    <label for="description">Description</label>
+    <textarea id="description" name="description" placeholder="Description" required></textarea>
+
+    <label for="manufacturer">Manufacturer</label>
+    <input type="text" id="manufacturer" name="manufacturer" placeholder="Manufacturer" required>
+
+    <div id="defaultFields">
+        <div>
+            <label for="defaultWeight">Weight (kg)</label>
+            <input type="number" id="defaultWeight" name="weight" placeholder="Weight" step="0.01" required>
+        </div>
+        <div>
+            <label for="defaultPrice">Base Price ($)</label>
+            <input type="number" id="defaultPrice" name="basePrice" placeholder="Base Price" step="0.01" required>
+        </div>
+        <div>
+            <label for="defaultCost">Cost ($)</label>
+            <input type="number" id="defaultCost" name="cost" placeholder="Cost" step="0.01" required>
+        </div>
+    </div>
+
+    <label>
+        <input id="checkBox" type="checkbox" name="hasVariants">
+        Has Variants
+    </label>
+
+    <div id="variantsContainer" style="display:none;">
+        <button type="button" id="addVariantBtn">+ Add Variant</button>
+        <div id="variantInputs"></div>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+<script src="AddProducts.js" defer></script>
+</body>
+</html>
